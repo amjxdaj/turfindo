@@ -4,89 +4,90 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Base UI colors */
+    --background: 150 25% 97%;
+    --foreground: 220 25% 20%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 25% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 25% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Turf-themed primary green */
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Light gray with slight green tint */
+    --secondary: 140 10% 90%;
+    --secondary-foreground: 220 25% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 140 10% 90%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Subtle accent color - slightly different green */
+    --accent: 160 50% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Alert colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* UI elements */
+    --border: 142 10% 80%;
+    --input: 142 10% 80%;
+    --ring: 142 70% 45%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 140 30% 97%;
+    --sidebar-foreground: 220 25% 20%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 160 50% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 142 10% 80%;
+    --sidebar-ring: 142 70% 45%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 216 28% 7%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 216 28% 10%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 216 28% 10%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Slightly brighter green for dark mode */
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 215 25% 16%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 215 25% 16%;
+    --muted-foreground: 217 15% 70%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 160 50% 45%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 70% 50%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 215 25% 16%;
+    --input: 215 25% 16%;
+    --ring: 142 70% 45%;
+
+    --sidebar-background: 216 28% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 142 70% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 160 50% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 215 25% 16%;
+    --sidebar-ring: 142 70% 45%;
   }
 }
 
@@ -97,5 +98,59 @@
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
+  }
+}
+
+@layer utilities {
+  /* 3D effects */
+  .card-3d {
+    @apply rounded-xl bg-gradient-to-br from-white to-secondary shadow-3d transition-all duration-300 hover:shadow-3d-hover active:shadow-3d-pressed;
+  }
+
+  .button-3d {
+    @apply relative rounded-lg bg-gradient-to-b from-primary/90 to-primary shadow-3d transition-all duration-200 hover:-translate-y-0.5 hover:shadow-3d-hover active:translate-y-0.5 active:shadow-3d-pressed;
+  }
+
+  .field-3d {
+    @apply rounded-lg bg-white/50 shadow-sm backdrop-blur-sm;
+  }
+
+  /* Turf specific */
+  .turf-card {
+    @apply card-3d overflow-hidden;
+  }
+
+  .time-slot {
+    @apply flex h-12 w-full items-center justify-center rounded-md border border-border bg-secondary px-3 py-2 text-sm font-medium transition-all duration-200;
+  }
+
+  .time-slot-available {
+    @apply cursor-pointer border-transparent bg-booking-available/10 text-booking-available hover:bg-booking-available/20;
+  }
+
+  .time-slot-booked {
+    @apply cursor-not-allowed border-transparent bg-booking-booked/10 text-booking-booked/50 opacity-50;
+  }
+
+  .time-slot-selected {
+    @apply border-booking-selected bg-booking-selected/10 text-booking-selected ring-2 ring-booking-selected;
+  }
+
+  /* Animations */
+  .fade-in {
+    @apply animate-fade-in;
+  }
+
+  .slide-in {
+    @apply animate-slide-in;
+  }
+
+  .bounce-effect {
+    @apply animate-hover-bounce;
+  }
+
+  .pulse-effect {
+    @apply animate-pulse-scale;
   }
 }
